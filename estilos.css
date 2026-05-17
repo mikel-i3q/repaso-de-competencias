@@ -1,0 +1,27 @@
+body {
+    scroll-behavior: smooth;
+}
+
+body :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(.navbar-brand) {
+    font-family: Calibri, sans-serif;
+    color: #000;
+}
+
+.navbar-nav .nav-link {
+    color: cyan !important;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+pre {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    border-radius: 6px;
+}
+
+section {
+    padding-top: 20px;
+}

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repaso JavaScript</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container-fluid">
+    <span class="navbar-brand">Repaso JS</span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav flex-wrap">
+        <li class="nav-item"><a class="nav-link" href="#variables">Variables</a></li>
+        <li class="nav-item"><a class="nav-link" href="#operadores">Operadores</a></li>
+        <li class="nav-item"><a class="nav-link" href="#condicionales">Condicionales</a></li>
+        <li class="nav-item"><a class="nav-link" href="#bucles">Bucles</a></li>
+        <li class="nav-item"><a class="nav-link" href="#arrays">Arrays</a></li>
+        <li class="nav-item"><a class="nav-link" href="#funciones">Funciones</a></li>
+        <li class="nav-item"><a class="nav-link" href="#dom">DOM</a></li>
+        <li class="nav-item"><a class="nav-link" href="#eventos">Eventos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#math">Math</a></li>
+        <li class="nav-item"><a class="nav-link" href="#strings">Strings</a></li>
+        <li class="nav-item"><a class="nav-link" href="#fechas">Fechas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#formularios">Formularios</a></li>
+        <li class="nav-item"><a class="nav-link" href="#errores">Errores típicos</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container my-4">
+  <h1 class="text-center mb-2">Repaso de JavaScript</h1>
+  <p class="text-center text-muted mb-5">Resumen de los conceptos básicos trabajados en clase.</p>
+
+  <!-- 1. VARIABLES -->
+  <section id="variables">
+    <div class="card mb-4">
+      <div class="card-header bg-dark text-white"><h5 class="mb-0">1. Variables y tipos</h5></div>
+      <div class="card-body">
+        <h6>Explicación</h6>
+        <p>Las variables guardan datos. Usamos <code>let</code> (puede cambiar), <code>const</code> (no cambia) y <code>var</code> (antigua, mejor evitar). Los tipos básicos son: <strong>string</strong>, <strong>number</strong>, <strong>boolean</strong>, <strong>null</strong> y <strong>undefined</strong>.</p>
+        <h6>Ejemplo de código</h6>
+        <pre><code>let nombre = "Ana";       // string
+const edad = 20;          // number
+let activo = true;        // boolean
+let sinValor = null;      // null
+
+console.log(typeof nombre); // "string"
+console.log(typeof edad);   // "number"</code></pre>
+        <h6>¿Qué hace?</h6>
+        <p>Declaramos cuatro variables de distintos tipos. Con <code>typeof</code> podemos saber qué tipo de dato tiene una variable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. OPERADORES -->
+  <section id="operadores">
+    <div class="card mb-4">
+      <div class="card-header bg-dark text-white"><h5 class="mb-0">2. Operadores</h5></div>
+      <div class="card-body">
+        <h6>Explicación</h6>
+        <p>Los operadores realizan operaciones sobre valores. Los hay aritméticos <code>+ - * / %</code>, de comparación <code>=== !== > &lt;</code> y lógicos <code>&amp;&amp; || !</code>.</p>
+        <h6>Ejemplo de código</h6>
+        <pre><code>let a = 10, b = 3;
+console.log(a + b);          // 13
+console.log(a % b);          // 1 (resto de la división)
+console.log(a === 10);       // true
+console.log(a > b && b > 0); // true (los dos son ciertos)</code></pre>
+        <h6>¿Qué hace?</h6>
+        <p>Muestra operaciones básicas. El <code>%</code> devuelve el resto de la división. El <code>===</code> compara valor Y tipo, no solo el valor.</p>
+        <hr>
+        <h6>Pruébalo</h6>
+        <div class="row g-2 align-items-end">
+          <div class="col-auto"><input type="number" id="op_a" class="form-control" placeholder="Número A" style="width:120px"></div>
+          <div class="col-auto">
+            <select id="op_tipo" class="form-select" style="width:80px">
+              <option>+</option><option>-</option><option>*</option><option>/</option><option>%</option>
+            </select>
+          </div>
+          <div class="col-auto"><input type="number" id="op_b" class="form-control" placeholder="Número B" style="width:120px"></div>
+          <div class="col-auto"><button class="btn btn-dark" onclick="calcularOperador()">Calcular</button></div>
+        </div>
+        <p class="mt-2 fw-bold" id="res_operador"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. CONDICIONALES -->
+  <section id="condicionales">
+    <div class="card mb-4">
+      <div class="card-header bg-dark text-white"><h5 class="mb-0">3. Condicionales</h5></div>
+      <div class="card-body">
+        <h6>Explicación</h6>
+        <p>Permiten ejecutar código solo si se cumple una condición. Usamos <code>if</code>, <code>else if</code> y <code>else</code>.</p>
+        <h6>Ejemplo de código</h6>
+        <pre><code>let nota = 7;
+
+if (nota >= 9) {
+    console.log("Sobresaliente");
+} else if (nota >= 5) {
+    console.log("Aprobado");
+} else {
+    console.log("Suspendido");
+}</code></pre>
+        <h6>¿Qué hace?</h6>
+        <p>Comprueba el valor de <code>nota</code> y muestra un mensaje distinto según el rango. Con nota 7 entra en el <code>else if</code> y muestra "Aprobado".</p>
+        <hr>
+        <h6>Pruébalo</h6>
+        <div class="row g-2 align-items-end">
+          <div class="col-auto"><input type="number" id="inp_nota" class="form-control" placeholder="Nota (0-10)" style="width:140px"></div>
+          <div class="col-auto"><button class="btn btn-dark" onclick="evaluarNota()">Evaluar</button></div>
+        </div>
+        <p class="mt-2 fw-bold" id="res_nota"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. BUCLES -->
+  <section id="bucles">
+    <div class="card mb-4">
+      <div class="card-header bg-dark text-white"><h5 class="mb-0">4. Bucles</h5></div>
+      <div class="card-body">
+        <h6>Explicación</h6>
+        <p>Repiten un bloque de código. El <code>for</code> se usa cuando sabemos cuántas veces, el <code>while</code> mientras se cumpla una condición, y <code>for...of</code> para recorrer arrays.</p>
+        <h6>Ejemplo de código</h6>
+        <pre><code>for (let i = 1; i <= 5; i++) {
+    console.log("Vuelta " + i);
+}
+
+let frutas = ["manzana", "pera", "uva"];
+for (let fruta of frutas) {
+    console.log(fruta);
+}</code></pre>
+        <h6>¿Qué hace?</h6>
+        <p>El primer bucle imprime "Vuelta 1" hasta "Vuelta 5". El segundo recorre el array e imprime cada fruta.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. ARRAYS -->
+  <section id="arrays">
+    <div class="card mb-4">
+      <div class="card-header bg-dark text-white"><h5 class="mb-0">5. Arrays</h5></div>
+      <div class="card-body">
+        <h6>Explicación</h6>
+        <p>Un array es una lista ordenada de valores. Los métodos más útiles: <code>push</code>, <code>pop</code>, <code>splice</code>, <code>map</code>, <code>filter</code>.</p>
+        <h6>Ejemplo de código</h6>
+        <pre><code>let frutas = ["manzana", "pera", "uva"];
+
+frutas.push("naranja");   // añade al final → 4 elementos
+frutas.pop();             // elimina el último → vuelve a 3
+
+let mayusculas = frutas.map(f => f.toUpperCase());
+// ["MANZANA", "PERA", "UVA"]
+
+let cortas = frutas.filter(f => f.length <= 4);
+// ["pera", "uva"]</code></pre>
+        <h6>¿Qué hace?</h6>
+        <p><code>push</code> añade un elemento y <code>pop</code> lo elimina. <code>map</code> devuelve un nuevo array transformado. <code>filter</code> devuelve solo los que cumplen la condición.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FUNCIONES -->
+  <section id="funciones">
+    <div class="card mb-4">
+      <div class="card-header bg-dark text-white"><h5 class="mb-0">6. Funciones</h5></div>
+      <div class="card-body">
+        <h6>Explicación</h6>
+        <p>Bloque de código reutilizable. Puede recibir parámetros y devolver un valor con <code>return</code>. Las funciones flecha (<code>=></code>) son una forma más corta de escribirlas.</p>
+        <h6>Ejemplo de código</h6>
+        <pre><code>// Función clásica
+function sumar(a, b) {
+    return a + b;
+}
+
+// Función flecha
+const multiplicar = (a, b) => a * b;
+
+console.log(sumar(3, 4));        // 7
+console.log(multiplicar(3, 4));  // 12</code></pre>
+        <h6>¿Qué hace?</h6>
+        <p>Define dos funciones que hacen operaciones distintas. La función flecha es más compacta y se usa mucho con <code>map</code> y <code>filter</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. DOM -->
+  <section id="dom">
+    <div class="card mb-4">
+      <div class="card-header bg-dark text-white"><h5 class="mb-0">7. DOM</h5></div>
+      <div class="card-body">
+        <h6>Explicación</h6>
+        <p>El DOM es la representación del HTML en JavaScript. Nos permite seleccionar y modificar elementos de la página.</p>
+        <h6>Ejemplo de código</h6>
+        <pre><code>// Seleccionar un elemento
+const titulo = document.getElementById('miTitulo');
+
+// Modificarlo
+titulo.textContent = 'Nuevo título';
+titulo.style.color = 'red';
+
+// Seleccionar varios
+const parrafos = document.querySelectorAll('p');</code></pre>
+        <h6>¿Qué hace?</h6>
+        <p>Selecciona un elemento por su id y cambia su texto y color. Con <code>querySelectorAll</code> podemos seleccionar varios elementos a la vez.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. EVENTOS -->
+  <section id="eventos">
+    <div class="card mb-4">
+      <div class="card-header bg-dark text-white"><h5 class="mb-0">8. Eventos</h5></div>
+      <div class="card-body">
+        <h6>Explicación</h6>
+        <p>Los eventos permiten reaccionar a acciones del usuario: clic, tecla pulsada, pasar el ratón... Se capturan con <code>addEventListener</code> o directamente con <code>onclick</code> en el HTML.</p>
+        <h6>Ejemplo de código</h6>
+        <pre><code>const boton = document.getElementById('miBoton');
+
+boton.addEventListener('click', function() {
+    alert('¡Hiciste clic!');
+});</code></pre>
+        <h6>¿Qué hace?</h6>
+        <p>Cuando el usuario hace clic en el botón, se ejecuta la función y aparece un <code>alert</code>. Es la base de toda interactividad en la web.</p>
+        <hr>
+        <h6>Pruébalo</h6>
+        <button class="btn btn-dark" onclick="contarClicks()">Haz clic aquí</button>
+        <p class="mt-2 fw-bold" id="res_evento">Clicks: 0</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. MATH -->
+  <section id="math">
+    <div class="card mb-4">
+      <div class="card-header bg-dark text-white"><h5 class="mb-0">9. Math</h5></div>
+      <div class="card-body">
+        <h6>Explicación</h6>
+        <p>El objeto <code>Math</code> tiene métodos matemáticos ya integrados en JavaScript.</p>
+        <h6>Ejemplo de código</h6>
+        <pre><code>Math.round(4.6);   // 5  → redondea al más cercano
+Math.floor(4.9);   // 4  → siempre hacia abajo
+Math.ceil(4.1);    // 5  → siempre hacia arriba
+Math.random();     // número aleatorio entre 0 y 1
+Math.max(3, 8, 1); // 8
+Math.min(3, 8, 1); // 1
+
+// Número aleatorio entre 1 y 10:
+Math.floor(Math.random() * 10) + 1;</code></pre>
+        <h6>¿Qué hace?</h6>
+        <p>Muestra los métodos de redondeo y cómo generar un número aleatorio en un rango combinando <code>Math.random()</code> con <code>Math.floor()</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. STRINGS -->
+  <section id="strings">
+    <div class="card mb-4">
+      <div class="card-header bg-dark text-white"><h5 class="mb-0">10. Strings</h5></div>
+      <div class="card-body">
+        <h6>Explicación</h6>
+        <p>Los strings son cadenas de texto. Tienen métodos muy útiles para manipularlos.</p>
+        <h6>Ejemplo de código</h6>
+        <pre><code>let texto = "  Hola Mundo  ";
+
+texto.trim()                // "Hola Mundo" (quita espacios)
+texto.toUpperCase()         // "  HOLA MUNDO  "
+texto.includes("Mundo")     // true
+texto.replace("Mundo","JS") // "  Hola JS  "
+
+// Template literals (insertar variables en texto):
+let nombre = "Ana";
+console.log(`Hola, ${nombre}!`); // "Hola, Ana!"</code></pre>
+        <h6>¿Qué hace?</h6>
+        <p>Muestra los métodos más frecuentes. Los template literals (comillas invertidas) permiten meter variables dentro del texto de forma cómoda.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. FECHAS -->
+  <section id="fechas">
+    <div class="card mb-4">
+      <div class="card-header bg-dark text-white"><h5 class="mb-0">11. Fechas</h5></div>
+      <div class="card-body">
+        <h6>Explicación</h6>
+        <p>El objeto <code>Date</code> permite trabajar con fechas y horas. Se crea con <code>new Date()</code>.</p>
+        <h6>Ejemplo de código</h6>
+        <pre><code>const ahora = new Date();
+
+ahora.getFullYear(); // año actual (ej: 2025)
+ahora.getMonth();    // mes (ojo: enero = 0, diciembre = 11)
+ahora.getDate();     // día del mes (1-31)
+ahora.getDay();      // día de la semana (0 = domingo)
+ahora.getHours();    // hora (0-23)</code></pre>
+        <h6>¿Qué hace?</h6>
+        <p>Crea un objeto con la fecha y hora actuales y accede a sus partes. Importante: <code>getMonth()</code> empieza en 0, así que hay que sumarle 1 para mostrar el mes real.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. FORMULARIOS -->
+  <section id="formularios">
+    <div class="card mb-4">
+      <div class="card-header bg-dark text-white"><h5 class="mb-0">12. Formularios</h5></div>
+      <div class="card-body">
+        <h6>Explicación</h6>
+        <p>Con JavaScript leemos los valores de los campos con <code>.value</code>, los validamos y mostramos mensajes de error si algo falla.</p>
+        <h6>Ejemplo de código</h6>
+        <pre><code>const nombre = document.getElementById('nombre').value.trim();
+const edad   = document.getElementById('edad').value;
+
+if (nombre === '') {
+    alert('El nombre es obligatorio');
+    return;
+}
+if (edad < 0 || edad > 120) {
+    alert('Edad no válida');
+    return;
+}</code></pre>
+        <h6>¿Qué hace?</h6>
+        <p>Lee dos campos, los valida y detiene la ejecución con <code>return</code> si algo falla. Es exactamente lo que hacemos en el proyecto CRUD de clase.</p>
+        <hr>
+        <h6>Pruébalo</h6>
+        <div class="row g-2 align-items-end">
+          <div class="col-auto"><input type="text" id="form_nombre" class="form-control" placeholder="Tu nombre"></div>
+          <div class="col-auto"><input type="number" id="form_edad" class="form-control" placeholder="Edad" style="width:100px"></div>
+          <div class="col-auto"><button class="btn btn-dark" onclick="validarFormulario()">Enviar</button></div>
+        </div>
+        <p class="mt-2 fw-bold" id="res_form"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. ERRORES TÍPICOS -->
+  <section id="errores">
+    <div class="card mb-4">
+      <div class="card-header bg-dark text-white"><h5 class="mb-0">13. Errores típicos</h5></div>
+      <div class="card-body">
+        <h6>Explicación</h6>
+        <p>Estos son los errores más frecuentes al empezar con JavaScript. Conocerlos te ahorra mucho tiempo de depuración.</p>
+
+        <h6>= vs == vs ===</h6>
+        <pre><code>let x = 5;
+x == "5"   // true  (solo compara valor)
+x === "5"  // false (compara valor Y tipo)
+// Usa siempre === para comparar</code></pre>
+
+        <h6>getMonth() empieza en 0</h6>
+        <pre><code>new Date().getMonth() // enero=0, diciembre=11
+// Solución: sumar 1
+new Date().getMonth() + 1</code></pre>
+
+        <h6>El script va antes del HTML</h6>
+        <pre><code>// Si pones el script en el &lt;head&gt;, el HTML aún no existe
+// y querySelector devuelve null.
+// Solución: pon el &lt;script&gt; justo antes de &lt;/body&gt;</code></pre>
+
+        <h6>push no devuelve el array</h6>
+        <pre><code>let arr = [1, 2];
+let resultado = arr.push(3); // resultado = 3 (la nueva longitud!)
+// El array modificado es arr, no resultado</code></pre>
+
+        <h6>Olvidar .trim() al validar inputs</h6>
+        <pre><code>input.value === ""         // false si hay espacios en blanco
+input.value.trim() === ""  // true si solo hay espacios
+// Usa siempre .trim() al validar</code></pre>
+
+        <h6>¿Qué hace cada ejemplo?</h6>
+        <p>Cada bloque muestra el error típico y su solución. Son los fallos que más se repiten en los proyectos de clase.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Operadores
+    function calcularOperador() {
+        const a = parseFloat(document.getElementById('op_a').value)
+        const b = parseFloat(document.getElementById('op_b').value)
+        const op = document.getElementById('op_tipo').value
+        const res = document.getElementById('res_operador')
+
+        if (isNaN(a) || isNaN(b)) {
+            res.textContent = 'Introduce dos números.'
+            return
+        }
+
+        let resultado
+        if (op === '+') resultado = a + b
+        else if (op === '-') resultado = a - b
+        else if (op === '*') resultado = a * b
+        else if (op === '/') resultado = b !== 0 ? a / b : 'Error: división por 0'
+        else resultado = b !== 0 ? a % b : 'Error: módulo por 0'
+
+        res.textContent = `Resultado: ${a} ${op} ${b} = ${resultado}`
+    }
+
+    // Condicionales
+    function evaluarNota() {
+        const nota = parseFloat(document.getElementById('inp_nota').value)
+        const res = document.getElementById('res_nota')
+
+        if (isNaN(nota) || nota < 0 || nota > 10) {
+            res.textContent = 'Introduce una nota entre 0 y 10.'
+            return
+        }
+
+        if (nota >= 9) res.textContent = 'Sobresaliente'
+        else if (nota >= 7) res.textContent = 'Notable'
+        else if (nota >= 5) res.textContent = 'Aprobado'
+        else res.textContent = 'Suspendido'
+    }
+
+    // Eventos
+    let clicks = 0
+    function contarClicks() {
+        clicks++
+        document.getElementById('res_evento').textContent = 'Clicks: ' + clicks
+    }
+
+    // Formularios
+    function validarFormulario() {
+        const nombre = document.getElementById('form_nombre').value.trim()
+        const edad = parseInt(document.getElementById('form_edad').value)
+        const resEl = document.getElementById('res_form')
+
+        if (nombre === '') {
+            resEl.textContent = 'El nombre es obligatorio.'
+            resEl.className = 'mt-2 fw-bold text-danger'
+            return
+        }
+        if (isNaN(edad) || edad < 0 || edad > 120) {
+            resEl.textContent = 'Introduce una edad válida (0-120).'
+            resEl.className = 'mt-2 fw-bold text-danger'
+            return
+        }
+
+        resEl.textContent = `Formulario válido: ${nombre}, ${edad} años.`
+        resEl.className = 'mt-2 fw-bold text-success'
+    }
+</script>
+
+</body>
+</html>
